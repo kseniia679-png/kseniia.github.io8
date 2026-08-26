@@ -1,180 +1,70 @@
 <!DOCTYPE html>
 <html lang="fi">
-<head>
-  <meta charset="UTF-8" />
-  <title>Kseniia – Ohjelmistokehittäjä</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 2rem 1rem;
-      line-height: 1.6;
-      background: #0e131f;
-      color: #e5e7eb;
-    }
-    header {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-    h1 {
-      font-size: 2.2rem;
-      margin-bottom: 0.3rem;
-    }
-    h2 {
-      margin-top: 2rem;
-      font-size: 1.4rem;
-      border-bottom: 1px solid #334155;
-      padding-bottom: 0.3rem;
-    }
-    a {
-      color: #38bdf8;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .tag {
-      display: inline-block;
-      background: #1e293b;
-      border-radius: 999px;
-      padding: 0.2rem 0.7rem;
-      margin: 0.15rem;
-      font-size: 0.85rem;
-    }
-    .card {
-      background: #020617;
-      border-radius: 0.75rem;
-      padding: 1rem 1.2rem;
-      margin-top: 1rem;
-      border: 1px solid #1f2937;
-    }
-    footer {
-      margin-top: 3rem;
-      font-size: 0.85rem;
-      text-align: center;
-      color: #9ca3af;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Kseniia – Ohjelmistokehittäjä</h1>
-    <p>Rakennan selkeitä, toimivia ja käyttäjäystävällisiä sovelluksia.</p>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ohjelmointi</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav class="topnav">
+      <a href="#intro">Esittely</a>
+      <a href="#tyokalut">Työkalut</a>
+      <a href="#projektit">Projektit</a>
+    </nav>
 
-  <section>
-    <h2>Minusta</h2>
-    <p>
-      Olen Kseniia, ohjelmistokehittäjä, joka nauttii ongelmanratkaisusta,
-      rauhallisesta työskentelystä ja selkeästä dokumentoinnista.
-      Pidän siitä, että koodi on ymmärrettävää ja helposti ylläpidettävää.
-    </p>
-    <p>
-      Tavoitteeni on kehittyä monipuoliseksi kehittäjäksi, joka hallitsee
-      modernit työkalut ja pystyy rakentamaan sekä pieniä että laajempia projekteja.
-    </p>
-  </section>
-
-  <section>
-    <h2>Ohjelmistokehittäjän tehtävät</h2>
-
-    <div class="card">
-      <h3>Frontend-kehitys</h3>
+    <header class="hero">
+      <h1>Ohjelmointi</h1>
       <p>
-        Rakennan selkeitä ja responsiivisia käyttöliittymiä HTML:n ja CSS:n avulla.
-        Keskityn siihen, että sivut toimivat hyvin sekä puhelimella että tietokoneella.
+        Ohjelmointi on luova ja haastava harrastus, jossa ratkaistaan ongelmia,
+        rakennetaan uusia asioita ja kehitetään omaa ajattelua. Se yhdistää
+        logiikkaa, kekseliäisyyttä ja jatkuvaa oppimista.
       </p>
-      <p>
-        <span class="tag">HTML</span>
-        <span class="tag">CSS</span>
-        <span class="tag">Responsiivinen suunnittelu</span>
-        <span class="tag">Käyttöliittymän selkeys</span>
-      </p>
-    </div>
+    </header>
 
-    <div class="card">
-      <h3>Backend-perusteet</h3>
-      <p>
-        Teen pieniä harjoitusprojekteja Pythonilla, kuten botteja ja automaatioita.
-        Tavoitteena on oppia rakentamaan yksinkertaisia palveluita ja käsittelemään dataa.
-      </p>
-      <p>
-        <span class="tag">Python</span>
-        <span class="tag">Automaatio</span>
-        <span class="tag">Pienet skriptit</span>
-      </p>
-    </div>
+    <main>
+      <section id="intro" class="card">
+        <h2>Esittely</h2>
+        <p>
+          Ohjelmointi kehittää keskittymistä, ongelmanratkaisutaitoa ja luovuutta.
+          Harrastuksena se on sekä palkitseva että käytännöllinen, koska siitä voi
+          tehdä omia projekteja, pelejä, sivustoja tai sovelluksia.
+        </p>
+      </section>
 
-    <div class="card">
-      <h3>Versionhallinta</h3>
-      <p>
-        Käytän Git-versionhallintaa projektien hallintaan ja GitHubia
-        projektien julkaisuun sekä dokumentointiin.
-      </p>
-      <p>
-        <span class="tag">Git</span>
-        <span class="tag">GitHub</span>
-        <span class="tag">GitHub Pages</span>
-      </p>
-    </div>
+      <section id="tyokalut" class="card">
+        <h2>Työkalut</h2>
+        <ul>
+          <li>Tietokone ja näppäimistö</li>
+          <li>Koodieditori, kuten VS Code</li>
+          <li>Python tai JavaScript</li>
+          <li>Internet ja oppimateriaali</li>
+          <li>Ideoita, kärsivällisyyttä ja harjoittelua</li>
+        </ul>
+      </section>
 
-    <div class="card">
-      <h3>Dokumentointi ja suunnittelu</h3>
-      <p>
-        Kirjoitan selkeitä ohjeita ja projektikuvauksia Markdownilla.
-        Suunnittelen projektit vaiheittain ja dokumentoin oppimisen.
-      </p>
-      <p>
-        <span class="tag">Markdown</span>
-        <span class="tag">Projektisuunnittelu</span>
-        <span class="tag">Selkeä dokumentointi</span>
-      </p>
-    </div>
-  </section>
+      <section id="projektit" class="card">
+        <h2>Projektit</h2>
+        <p>
+          Aloittaessa voi tehdä pieniä harjoituksia, kuten laskureita, pelejä tai
+          nettisivuja. Kun taito kasvaa, voi siirtyä suurempiin projekteihin ja
+          kokeilla uusia ohjelmointikieliä ja tekniikoita.
+        </p>
+      </section>
 
-  <section>
-    <h2>Projektit</h2>
+      <section class="card image-section">
+        <h2>Harrastuskuva</h2>
+        <img
+          src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=900&q=80"
+          alt="Tietokoneen ääressä työskentelevä ohjelmoija"
+        />
+      </section>
+    </main>
 
-    <div class="card">
-      <h3>Portfolio GitHub Pagesissa</h3>
-      <p>
-        Tämä sivu toimii ohjelmistokehittäjän portfoliosivuna.
-        Se on rakennettu HTML:llä ja CSS:llä ja julkaistu GitHub Pagesissa.
-      </p>
-      <p><strong>Tekniikat:</strong> HTML, CSS, Git, GitHub Pages</p>
-    </div>
-
-    <div class="card">
-      <h3>Python Botit</h3>
-      <p>
-        Olen tehnyt pieniä Python-botteja, jotka suorittavat automaattisia tehtäviä,
-        kuten tiedostojen käsittelyä tai yksinkertaisia komentoja.
-      </p>
-      <p><strong>Tekniikat:</strong> Python, automaatio</p>
-    </div>
-
-    <div class="card">
-      <h3>Harjoitussivustot</h3>
-      <p>
-        Rakennan harjoitussivustoja HTML:llä ja CSS:llä oppiakseni
-        rakenteen, typografian ja ulkoasun hallintaa.
-      </p>
-      <p><strong>Tekniikat:</strong> HTML, CSS</p>
-    </div>
-  </section>
-
-  <section>
-    <h2>Yhteystiedot</h2>
-    <p>
-      GitHub: <a href="https://github.com/kseniia679-png" target="_blank">github.com/kseniia679-png</a><br />
-      Sähköposti: <a href="mailto:esimerkki@posti.fi">esimerkki@posti.fi</a>
-    </p>
-  </section>
-
-  <footer>
-    <p>Rakennettu ohjelmistokehittäjänä – päivittyy taitojen mukana.</p>
-  </footer>
-</body>
+      <p>Lisätietoa harrastuksesta löydät tästä linkistä:</p>
+      <a href="https://code.org/" target="_blank" rel="noopener noreferrer">
+        code.org - ohjelmoinnin oppiminen
+      </a>
+    </footer>
+  </body>
 </html>
