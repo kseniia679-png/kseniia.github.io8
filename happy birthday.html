@@ -12,11 +12,20 @@
             user-select: none;
         }
 
+        html, body {
+            width: 100%;
+            min-height: 100%;
+            overflow: hidden;
+        }
+
         body {
             height: 100vh;
             width: 100vw;
-            overflow: hidden;
-            background: radial-gradient(circle at center, #1b3a4b 0%, #061a23 100%);
+            background:
+                radial-gradient(circle at 50% 15%, rgba(120, 219, 255, 0.20), transparent 22%),
+                radial-gradient(circle at 12% 20%, rgba(118, 74, 255, 0.22), transparent 25%),
+                radial-gradient(circle at 80% 15%, rgba(255, 158, 206, 0.18), transparent 18%),
+                linear-gradient(180deg, #071d2b 0%, #061a23 100%);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #fff;
             position: relative;
@@ -24,36 +33,38 @@
 
         #canvas {
             position: absolute;
-            top: 0;
-            left: 0;
+            inset: 0;
             width: 100%;
             height: 100%;
             z-index: 1;
             cursor: pointer;
         }
 
-        /* Кнопка музыки */
         .music-btn {
             position: fixed;
             top: 20px;
             right: 20px;
-            z-index: 10;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            z-index: 12;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.28);
             color: white;
             padding: 10px 18px;
-            border-radius: 30px;
+            border-radius: 999px;
             cursor: pointer;
             font-size: 14px;
+            letter-spacing: 0.02em;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
             transition: all 0.3s ease;
         }
+
         .music-btn:hover {
-            background: rgba(0, 180, 216, 0.4);
-            transform: scale(1.05);
+            background: rgba(0, 180, 216, 0.35);
+            border-color: rgba(202, 240, 248, 0.7);
+            transform: translateY(-1px) scale(1.03);
         }
 
-        /* Основной контейнер */
         .container {
             position: relative;
             z-index: 2;
@@ -68,17 +79,30 @@
 
         .card {
             pointer-events: auto;
-            background: rgba(10, 25, 47, 0.65);
+            background: rgba(7, 24, 34, 0.68);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border-radius: 28px;
-            padding: 35px 30px;
+            border-radius: 32px;
+            padding: 34px 28px 28px;
             text-align: center;
-            box-shadow: 0 12px 40px rgba(0, 180, 216, 0.25), inset 0 0 15px rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(0, 180, 216, 0.4);
-            max-width: 500px;
-            width: 90%;
+            box-shadow:
+                0 18px 45px rgba(0, 180, 216, 0.18),
+                inset 0 0 20px rgba(255, 255, 255, 0.08),
+                0 0 0 1px rgba(129, 219, 255, 0.15);
+            border: 1px solid rgba(144, 224, 239, 0.28);
+            max-width: 520px;
+            width: min(90vw, 500px);
+            position: relative;
+            overflow: hidden;
             animation: cardFloat 4s ease-in-out infinite alternate;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(144,224,239,0.08), rgba(255,255,255,0.02), rgba(0,180,216,0.06));
+            pointer-events: none;
         }
 
         @keyframes cardFloat {
@@ -87,75 +111,89 @@
         }
 
         h1 {
-            font-size: 30px;
+            position: relative;
+            z-index: 1;
+            font-size: clamp(28px, 4vw, 36px);
             margin-bottom: 12px;
             color: #caf0f8;
-            text-shadow: 0 0 12px rgba(0, 180, 216, 0.6);
+            text-shadow: 0 0 15px rgba(0, 180, 216, 0.65);
+            letter-spacing: 0.02em;
         }
 
         .subtitle {
+            position: relative;
+            z-index: 1;
             font-size: 15px;
-            color: #90e0ef;
-            margin-bottom: 25px;
+            color: #a5eaf7;
+            margin-bottom: 24px;
         }
 
-        /* Торт */
         .cake-container {
-            margin: 20px auto 30px;
-            width: 180px;
-            height: 120px;
             position: relative;
+            margin: 18px auto 26px;
+            width: 200px;
+            height: 125px;
             cursor: pointer;
+            z-index: 1;
+            filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.2));
+            transition: transform 0.2s ease;
+        }
+
+        .cake-container:hover {
+            transform: scale(1.02);
         }
 
         .cake-base {
             position: absolute;
             bottom: 0;
+            left: 10px;
             width: 180px;
-            height: 60px;
+            height: 62px;
             background: linear-gradient(to right, #0077b6, #00b4d8, #0077b6);
-            border-radius: 12px 12px 4px 4px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            border-radius: 12px 12px 7px 7px;
+            box-shadow: inset 0 0 10px rgba(255,255,255,0.18), 0 4px 12px rgba(0,0,0,0.35);
         }
 
         .cake-top {
             position: absolute;
-            bottom: 60px;
-            left: 15px;
-            width: 150px;
-            height: 45px;
-            background: linear-gradient(to right, #90e0ef, #caf0f8, #90e0ef);
-            border-radius: 10px 10px 0 0;
+            bottom: 62px;
+            left: 23px;
+            width: 154px;
+            height: 44px;
+            background: linear-gradient(to right, #b3ecff, #dff9ff, #b3ecff);
+            border-radius: 12px 12px 0 0;
+            box-shadow: inset 0 0 10px rgba(255,255,255,0.35);
         }
 
         .candles {
             position: absolute;
-            bottom: 105px;
+            bottom: 104px;
             width: 100%;
             display: flex;
             justify-content: space-around;
-            padding: 0 35px;
+            padding: 0 30px;
         }
 
         .candle {
-            width: 10px;
-            height: 28px;
-            background: linear-gradient(to bottom, #ff4d6d, #fff);
-            border-radius: 3px;
+            width: 12px;
+            height: 32px;
+            background: linear-gradient(to bottom, #ff6a88, #fff2f5);
+            border-radius: 5px;
             position: relative;
             cursor: pointer;
+            box-shadow: 0 3px 8px rgba(255, 105, 132, 0.35);
         }
 
         .flame {
             position: absolute;
-            top: -14px;
+            top: -15px;
             left: 50%;
             transform: translateX(-50%);
-            width: 10px;
-            height: 14px;
-            background: #ffb703;
-            border-radius: 50% 50% 20% 20%;
-            box-shadow: 0 0 10px #ffb703, 0 0 20px #fb8500;
+            width: 12px;
+            height: 16px;
+            background: linear-gradient(180deg, #ffd166, #ff9f1c 70%, #ff7b00);
+            border-radius: 50% 50% 45% 45%;
+            box-shadow: 0 0 12px rgba(255, 190, 77, 0.7), 0 0 24px rgba(255, 140, 0, 0.8);
             animation: flicker 0.6s infinite alternate;
         }
 
@@ -165,26 +203,30 @@
 
         @keyframes flicker {
             0% { transform: translateX(-50%) scale(1); }
-            100% { transform: translateX(-50%) scale(1.15) rotate(2deg); }
+            100% { transform: translateX(-50%) scale(1.18) rotate(2deg); }
         }
 
         .instruction {
+            position: relative;
+            z-index: 1;
             font-size: 13px;
-            color: #48cae4;
-            margin-top: -15px;
-            margin-bottom: 20px;
+            color: #75d9f7;
+            margin-top: -8px;
+            margin-bottom: 10px;
+            letter-spacing: 0.03em;
         }
 
-        /* Интерактивные плавающие подарки */
         .floating-gift {
             position: absolute;
             z-index: 3;
             font-size: 38px;
             cursor: pointer;
-            filter: drop-shadow(0 0 8px rgba(0, 180, 216, 0.8));
+            filter: drop-shadow(0 0 10px rgba(0, 180, 216, 0.75));
             transition: transform 0.2s ease;
             animation: floatAnim 6s infinite ease-in-out alternate;
+            opacity: 0.96;
         }
+
         .floating-gift:hover {
             transform: scale(1.3) rotate(10deg);
         }
@@ -194,7 +236,6 @@
             100% { transform: translateY(-30px) rotate(15deg); }
         }
 
-        /* Модальное окно пожелания */
         .modal {
             display: none;
             position: fixed;
@@ -203,53 +244,88 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(4, 15, 26, 0.8);
+            background: rgba(4, 15, 26, 0.72);
             backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             justify-content: center;
             align-items: center;
         }
 
         .modal-box {
-            background: linear-gradient(135deg, #0b2545, #134074);
-            border: 2px solid #48cae4;
-            border-radius: 24px;
-            padding: 35px;
+            background: linear-gradient(135deg, rgba(11, 37, 69, 0.98), rgba(19, 64, 116, 0.94));
+            border: 2px solid rgba(72, 202, 228, 0.9);
+            border-radius: 26px;
+            padding: 32px 28px 28px;
             text-align: center;
             max-width: 420px;
             width: 85%;
-            box-shadow: 0 10px 40px rgba(0, 180, 216, 0.5);
-            animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 14px 46px rgba(0, 180, 216, 0.38);
+            animation: popIn 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modal-box::before {
+            content: "";
+            position: absolute;
+            inset: -20% auto auto -20%;
+            width: 140%;
+            height: 140%;
+            background: radial-gradient(circle, rgba(255,255,255,0.08), transparent 60%);
+            pointer-events: none;
         }
 
         @keyframes popIn {
-            from { transform: scale(0.6); opacity: 0; }
+            from { transform: scale(0.62); opacity: 0; }
             to { transform: scale(1); opacity: 1; }
         }
 
-        .modal-icon { font-size: 55px; margin-bottom: 10px; }
-        .modal-title { font-size: 24px; color: #caf0f8; margin-bottom: 12px; }
-        .modal-text { font-size: 16px; color: #90e0ef; line-height: 1.6; margin-bottom: 25px; }
+        .modal-icon { font-size: 55px; margin-bottom: 8px; position: relative; z-index: 1; }
+        .modal-title { font-size: 24px; color: #caf0f8; margin-bottom: 12px; position: relative; z-index: 1; }
+        .modal-text { font-size: 16px; color: #a8eaf7; line-height: 1.6; margin-bottom: 24px; position: relative; z-index: 1; }
 
         .modal-btn {
-            background: #00b4d8;
-            color: #03045e;
-            font-weight: bold;
+            background: linear-gradient(135deg, #00b4d8, #90e0ef);
+            color: #03162e;
+            font-weight: 700;
             border: none;
             padding: 12px 30px;
-            border-radius: 25px;
+            border-radius: 999px;
             cursor: pointer;
             font-size: 15px;
-            transition: background 0.3s;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 8px 18px rgba(0, 180, 216, 0.35);
+            position: relative;
+            z-index: 1;
         }
-        .modal-btn:hover { background: #caf0f8; }
+
+        .modal-btn:hover {
+            transform: translateY(-1px) scale(1.02);
+            box-shadow: 0 12px 20px rgba(0, 180, 216, 0.42);
+        }
+
+        @media (max-width: 560px) {
+            .card {
+                padding: 26px 18px 22px;
+            }
+
+            .floating-gift {
+                font-size: 30px;
+            }
+
+            .music-btn {
+                top: 14px;
+                right: 14px;
+                padding: 9px 14px;
+                font-size: 12px;
+            }
+        }
     </style>
 </head>
 <body>
-
     <button class="music-btn" id="musicToggle">🎵 Включить музыку</button>
     <canvas id="canvas"></canvas>
 
-    <!-- Подарки, плавающие по экрану -->
     <div class="floating-gift" style="top: 15%; left: 10%; animation-delay: 0s;" onclick="openWish(0, event)">🎁</div>
     <div class="floating-gift" style="top: 25%; right: 12%; animation-delay: 1.5s;" onclick="openWish(1, event)">🎁</div>
     <div class="floating-gift" style="bottom: 18%; left: 15%; animation-delay: 3s;" onclick="openWish(2, event)">🎁</div>
@@ -273,7 +349,6 @@
         </div>
     </div>
 
-    <!-- Модальное окно -->
     <div class="modal" id="wishModal">
         <div class="modal-box">
             <div class="modal-icon" id="modalIcon">✨</div>
@@ -284,7 +359,6 @@
     </div>
 
     <script>
-        // === CANVAS & FIREWORKS SYSTEM ===
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
         let width = canvas.width = window.innerWidth;
@@ -298,20 +372,19 @@
         const particles = [];
         const stars = [];
 
-        // Создание звёздного фона
-        for(let i = 0; i < 80; i++) {
+        for(let i = 0; i < 90; i++) {
             stars.push({
                 x: Math.random() * width,
                 y: Math.random() * height,
-                size: Math.random() * 2 + 0.5,
+                size: Math.random() * 2.2 + 0.5,
                 alpha: Math.random(),
-                speed: Math.random() * 0.02 + 0.005
+                speed: Math.random() * 0.02 + 0.006
             });
         }
 
         function createFirework(x, y) {
-            const colors = ['#00b4d8', '#90e0ef', '#caf0f8', '#ffb703', '#ffffff', '#7209b7', '#48cae4'];
-            const particleCount = 70;
+            const colors = ['#00b4d8', '#90e0ef', '#caf0f8', '#ffb703', '#ffffff', '#7209b7', '#48cae4', '#ff6ec7'];
+            const particleCount = 80;
             for (let i = 0; i < particleCount; i++) {
                 const angle = (Math.PI * 2 / particleCount) * i + (Math.random() - 0.5);
                 const speed = Math.random() * 8 + 2;
@@ -329,7 +402,6 @@
             }
         }
 
-        // Клик по экрану создаёт салют
         canvas.addEventListener('click', (e) => {
             createFirework(e.clientX, e.clientY);
             playBeep(400 + Math.random() * 400, 0.05);
@@ -339,7 +411,6 @@
             ctx.fillStyle = 'rgba(6, 26, 35, 0.25)';
             ctx.fillRect(0, 0, width, height);
 
-            // Отрисовка фона
             stars.forEach(s => {
                 s.alpha += s.speed;
                 if (s.alpha > 1 || s.alpha < 0) s.speed = -s.speed;
@@ -349,7 +420,6 @@
                 ctx.fill();
             });
 
-            // Отрисовка частичек салюта
             particles.forEach((p, index) => {
                 p.x += p.vx;
                 p.y += p.vy;
@@ -374,17 +444,15 @@
 
         animate();
 
-        // Авто-салюты каждые 2.5 сек
         setInterval(() => {
             createFirework(Math.random() * width, Math.random() * height * 0.6);
         }, 2500);
 
-        // === ПОЖЕЛАНИЯ И ПОДАРКИ ===
         const wishes = [
-            { icon: "🌟", title: "Ярких Моментов!", text: "Пусть каждый день приносит столько же радости, сколько звёзд на этом ночном небе!" },
-            { icon: "💖", title: "Настоящего Счастья!", text: "Желаю тебе окружения из самых искренних людей, исполнения всех целей и легких дорог!" },
-            { icon: "🚀", title: "Головокружительных Успехов!", text: "Пусть любые твои задумки сбываются легко и вдохновляюще. Ты способна на всё!" },
-            { icon: "🌊", title: "Океан Гармонии!", text: "Пусть в душе всегда будет уют, тепло, а на лице — твоя самая прекрасная улыбка!" }
+            { icon: "🌟", title: "Ярких Моментов!", text: "Пусть каждый день приносит столько же радости, сколько звёзд на небе, а твоя улыбка освещает даже самые серые будни." },
+            { icon: "💖", title: "Настоящего Счастья!", text: "Желаю тебе окружения из самых искренних людей, исполнения всех мечтаний и любви, которая согревает душу каждый день." },
+            { icon: "🚀", title: "Головокружительных Успехов!", text: "Пусть любые твои задумки сбываются легко и вдохновляюще, а уверенность в себе будет расти вместе с тобой." },
+            { icon: "🌊", title: "Океан Гармонии!", text: "Пусть в душе всегда будет уют, тепло и спокойствие, а на лице — счастье, которое невозможно скрыть." }
         ];
 
         function openWish(index, event) {
@@ -394,7 +462,7 @@
             document.getElementById('modalTitle').innerText = w.title;
             document.getElementById('modalText').innerText = w.text;
             document.getElementById('wishModal').style.display = 'flex';
-            
+
             const rect = event.target.getBoundingClientRect();
             createFirework(rect.left + 20, rect.top + 20);
         }
@@ -403,7 +471,6 @@
             document.getElementById('wishModal').style.display = 'none';
         }
 
-        // === СВЕЧИ И ТОРТ ===
         let extinguishedCount = 0;
 
         function extinguishCandle(candle, event) {
@@ -418,16 +485,15 @@
                 if (extinguishedCount === 3) {
                     setTimeout(() => {
                         openWish(0, event);
-                        document.getElementById('modalTitle').innerText = "🎂 Загаданное желание сбудется!";
-                        document.getElementById('modalText').innerText = "Все свечи задуты! Пусть твое самое сокровенное желание обязательно исполнится!";
+                        document.getElementById('modalTitle').innerText = '🎂 Загаданное желание сбудется!';
+                        document.getElementById('modalText').innerText = 'Все свечи задуты! Пусть твоё самое сокровенное желание обязательно исполнится, а рядом всегда будут любовь, тепло и счастье.';
                     }, 500);
                 }
             }
         }
 
-        // === ЗВУКОВОЙ СИНТЕЗАТОР (Web Audio API) ===
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        
+
         function playBeep(freq, duration) {
             if (audioCtx.state === 'suspended') {
                 audioCtx.resume();
@@ -444,7 +510,6 @@
             osc.stop(audioCtx.currentTime + duration);
         }
 
-        // Простая мелодия Happy Birthday
         let isPlaying = false;
         let musicInterval;
         const notes = [
@@ -459,7 +524,7 @@
 
             if (!isPlaying) {
                 isPlaying = true;
-                document.getElementById('musicToggle').innerText = "🔇 Выключить музыку";
+                document.getElementById('musicToggle').innerText = '🔇 Выключить музыку';
                 let noteIdx = 0;
                 musicInterval = setInterval(() => {
                     playBeep(notes[noteIdx % notes.length], 0.3);
@@ -467,7 +532,7 @@
                 }, 400);
             } else {
                 isPlaying = false;
-                document.getElementById('musicToggle').innerText = "🎵 Включить музыку";
+                document.getElementById('musicToggle').innerText = '🎵 Включить музыку';
                 clearInterval(musicInterval);
             }
         });
